@@ -1,0 +1,48 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_DB: earthquake_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - shared-network
+    restart: "no"
+
+  backend:
+    image: earthquake-mapping
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - spring.datasource.url=jdbc:postgresql://postgres:5432/earthquake_db
+      - SERVER_PORT=8080
+      - spring.datasource.username=postgres
+      - spring.datasource.password=postgres
+    depends_on:
+      - postgres
+    networks:
+      - shared-network
+    restart: "no"
+
+  frontend:
+    image: earthquake-mapping-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - shared-network
+    restart: "no"
+
+networks:
+  shared-network:
+    driver: bridge
