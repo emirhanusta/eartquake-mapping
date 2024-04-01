@@ -61,48 +61,50 @@ export default function EarthquakeForm() {
   };
 
   return (
-    <>
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{ "& > :not(style)": { m: 1, width: "25ch" } }}
-      >
-        <FormGroup>
-          <TextField
-            id="latitude"
-            label="Enlem"
-            variant="outlined"
-            value={earthquake.latitude}
-            onChange={(event) =>
-              setEarthquake({ ...earthquake, latitude: event.target.value })
-            }
-          />
-          <TextField
-            id="longitude"
-            label="Boylam"
-            variant="outlined"
-            value={earthquake.longitude}
-            onChange={(event) =>
-              setEarthquake({ ...earthquake, longitude: event.target.value })
-            }
-          />
-          <TextField
-            id="magnitude"
-            label="Büyüklük"
-            variant="outlined"
-            value={earthquake.magnitude}
-            onChange={(event) =>
-              setEarthquake({ ...earthquake, magnitude: event.target.value })
-            }
-          />
-        </FormGroup>
-        <Button type="submit" variant="contained">
-          Ekle
-        </Button>
-      </Box>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "20px",
+        maxWidth: "400px",
+        margin: "auto",
+      }}
+    >
+      <TextField
+        id="latitude"
+        label="Enlem"
+        variant="outlined"
+        value={earthquake.latitude}
+        onChange={(event) =>
+          setEarthquake({ ...earthquake, latitude: event.target.value })
+        }
+      />
+      <TextField
+        id="longitude"
+        label="Boylam"
+        variant="outlined"
+        value={earthquake.longitude}
+        onChange={(event) =>
+          setEarthquake({ ...earthquake, longitude: event.target.value })
+        }
+      />
+      <TextField
+        id="magnitude"
+        label="Büyüklük"
+        variant="outlined"
+        value={earthquake.magnitude}
+        onChange={(event) =>
+          setEarthquake({ ...earthquake, magnitude: event.target.value })
+        }
+      />
+      <Button type="submit" variant="contained">
+        Ekle
+      </Button>
       <Button variant="contained" onClick={stopScript}>
         Scripti Durdur
       </Button>
-    </>
+    </Box>
   );
 }
