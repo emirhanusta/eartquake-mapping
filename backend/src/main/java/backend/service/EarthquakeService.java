@@ -25,8 +25,9 @@ public class EarthquakeService {
                 .longitude(earthquakeRequest.longitude())
                 .magnitude(earthquakeRequest.magnitude())
                 .build();
-        log.info("Saving earthquake: {}", earthquakeRequest);
-        return EarthquakeResponse.from(earthquakeRepository.save(earthquake));
+        var savedEarthquake = earthquakeRepository.save(earthquake);
+        log.info("Earthquake saved: {}", earthquakeRequest);
+        return EarthquakeResponse.from(savedEarthquake);
     }
 
     public List<EarthquakeResponse> getLastEarthquakesByMagnitude(int seconds, float magnitude) {

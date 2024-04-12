@@ -1,4 +1,4 @@
-package earthquake.mapping;
+package backend;
 
 import org.springframework.boot.test.context.SpringBootTest;
 

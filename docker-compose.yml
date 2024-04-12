@@ -15,9 +15,9 @@ services:
     restart: "no"
 
   backend:
-    image: earthquake-mapping
+    image: backend-app
     build:
-      context: ./
+      context: ./backend
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
@@ -33,7 +33,7 @@ services:
     restart: "no"
 
   frontend:
-    image: earthquake-mapping-frontend
+    image: frontend-app
     build:
       context: ./frontend
       dockerfile: Dockerfile
