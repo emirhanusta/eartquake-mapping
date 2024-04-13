@@ -3,7 +3,6 @@ import axios from "axios";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { FormGroup } from "@mui/material";
 
 export default function EarthquakeForm() {
   const [earthquake, setEarthquake] = useState({
@@ -13,6 +12,7 @@ export default function EarthquakeForm() {
   });
 
   const [intervalId, setIntervalId] = useState(null);
+  const [isScriptRunning, setIsScriptRunning] = useState(true);
 
   const generateRandomData = () => {
     const latitude = (Math.random() * (85 - -85) - 85).toFixed(6);
@@ -33,13 +33,14 @@ export default function EarthquakeForm() {
   };
 
   useEffect(() => {
-    const intervalId = setInterval(generateRandomData, 5000); // 5 saniyede bir yeni deprem verisi oluştur
+    const intervalId = setInterval(generateRandomData, 5000);
     setIntervalId(intervalId);
     return () => clearInterval(intervalId);
   }, []);
 
   const stopScript = () => {
     clearInterval(intervalId);
+    setIsScriptRunning(false);
     console.log("Script durduruldu.");
   };
 
@@ -102,7 +103,11 @@ export default function EarthquakeForm() {
       <Button type="submit" variant="contained">
         Ekle
       </Button>
-      <Button variant="contained" onClick={stopScript}>
+      <Button
+        variant="contained"
+        onClick={stopScript}
+        disabled={!isScriptRunning}
+      >
         Scripti Durdur
       </Button>
     </Box>

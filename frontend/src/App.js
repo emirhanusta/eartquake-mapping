@@ -6,7 +6,7 @@ import { Grid } from "@mui/material";
 
 export default function App() {
   return (
-    <Grid container spacing={5}>
+    <Grid container spacing={2}>
       <Grid
         item
         xs={2}

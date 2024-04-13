@@ -12,12 +12,14 @@ const customMarker = new Icon({
 
 function Map() {
   const [markers, setMarkers] = useState([]);
+  const [seconds, setSeconds] = useState(5);
+  const [magnitude, setMagnitude] = useState(4.0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/api/v1/earthquakes/5/1"
+          `http://localhost:8080/api/v1/earthquakes/${seconds}/${magnitude}`
         );
         const data = response.data;
         const newMarkers = data.map((earthquake, index) => {
