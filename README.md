@@ -40,7 +40,7 @@ Make sure you have Docker on your machine:
 
    - The web application is running at http://localhost:3000. You can view the application by directing your browser to this address
 
-   - Anomalous earthquakes will be shown pinned on the map.
+   - The script will generate earthquakes with magnitudes between 0 and 10, but only Anomalous earthquakes (above magnitude 4) will be shown as fixed on the map.
 
    - You can stop the script that adds random earthquake data by clicking on the "Scripti Durdur" button.
 
