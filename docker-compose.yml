@@ -15,10 +15,7 @@ services:
     restart: "no"
 
   backend:
-    image: backend-app
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: emirhanusta/server:v1
     ports:
       - "8080:8080"
     environment:
@@ -33,10 +30,7 @@ services:
     restart: "no"
 
   frontend:
-    image: frontend-app
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: emirhanusta/client:v1
     ports:
       - "3000:3000"
     networks:
