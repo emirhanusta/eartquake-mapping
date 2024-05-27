@@ -10,6 +10,11 @@ This project is a web application that processes earthquake data from around the
 - PostgreSql
 - Docker
 
+## Screenshot
+
+![screenshot 2024-05-27 152716](https://github.com/emirhanusta/eartquake-mapping/assets/83432342/e708d32a-6e7e-469c-a65b-ab462d9f993b)
+
+
 ## Setup
 
 ### Prerequisites
